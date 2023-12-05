@@ -1,0 +1,5 @@
+C:\ProgramData\Autodesk\Revit\Macros\2021\Revit\AppHookup\CreateSpaces2021\AddIn\CreateSpaces2021.dll
+C:\ProgramData\Autodesk\Revit\Macros\2021\Revit\AppHookup\CreateSpaces2021\AddIn\CreateSpaces2021.pdb
+C:\ProgramData\Autodesk\Revit\Macros\2021\Revit\AppHookup\CreateSpaces2021\Source\CreateSpaces2021\obj\Debug\CreateSpaces2021.csprojResolveAssemblyReference.cache
+C:\ProgramData\Autodesk\Revit\Macros\2021\Revit\AppHookup\CreateSpaces2021\Source\CreateSpaces2021\obj\Debug\CreateSpaces2021.dll
+C:\ProgramData\Autodesk\Revit\Macros\2021\Revit\AppHookup\CreateSpaces2021\Source\CreateSpaces2021\obj\Debug\CreateSpaces2021.pdb
