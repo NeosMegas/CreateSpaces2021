@@ -12,6 +12,9 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI.Selection;
 using System.Collections.Generic;
 using System.Linq;
+using Autodesk.Revit.DB.Architecture;
+using Autodesk.Revit.DB.Mechanical;
+using System.Diagnostics;
 
 namespace CreateSpaces2021
 {
@@ -185,7 +188,7 @@ namespace CreateSpaces2021
 		private Reference GetARLinkReference()
 		{
 			
-			Selection arSelection = this.Application.ActiveUIDocument.Selection;
+			Selection arSelection = this.ActiveUIDocument.Selection;
 			try {
 				return arSelection.PickObject(ObjectType.Element,new RvtLinkInstanceFilter(),"Выберите экземпляр размещенной связи АР");
 			} catch (Exception) {
@@ -241,8 +244,8 @@ namespace CreateSpaces2021
 		{
 			//Check if Document is opened in UI and Document is Project
 			sTimer.Reset();
-			if (null != this.Application.ActiveUIDocument && !this.Application.ActiveUIDocument.Document.IsFamilyDocument) {
-				DOC = this.Application.ActiveUIDocument.Document;
+			if (null != this.ActiveUIDocument && !this.ActiveUIDocument.Document.IsFamilyDocument) {
+				DOC = this.ActiveUIDocument.Document;
 				//Start taskdialog for select link
 				if (TdSelectARLink() == 0) {
 					return;
@@ -489,7 +492,7 @@ namespace CreateSpaces2021
 												Level upperLevel = localLevel;
 												//sp.get_Parameter(BuiltInParameter.ROOM_UPPER_LEVEL).Set(localLevel.LevelId);
 												sp.UpperLimit = GetLevelByElevation(DOC,localLevel.Elevation);
-												sp.get_Parameter(BuiltInParameter.ROOM_UPPER_OFFSET).Set(UnitUtils.ConvertToInternalUnits(defLimitOffset, DisplayUnitType.DUT_MILLIMETERS));
+												sp.get_Parameter(BuiltInParameter.ROOM_UPPER_OFFSET).Set(UnitUtils.ConvertToInternalUnits(defLimitOffset, UnitTypeId.Millimeters));
 											}
 											else
 											{
@@ -529,7 +532,7 @@ namespace CreateSpaces2021
 													if (roomsData.RoomsLevel == roomsData.UpperRoomLevel) {
 														Level upperLevel = localLevel;
 														wSpace.UpperLimit = upperLevel;
-														wSpace.get_Parameter(BuiltInParameter.ROOM_UPPER_OFFSET).Set(UnitUtils.ConvertToInternalUnits(defLimitOffset, DisplayUnitType.DUT_MILLIMETERS));
+														wSpace.get_Parameter(BuiltInParameter.ROOM_UPPER_OFFSET).Set(UnitUtils.ConvertToInternalUnits(defLimitOffset, UnitTypeId.Millimeters));
 													}
 													else
 													{
